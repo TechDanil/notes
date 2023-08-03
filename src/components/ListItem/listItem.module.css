@@ -1,0 +1,28 @@
+.item {
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 300px;
+    transition: background-color 0.2s ease;
+}
+
+.item.active {
+    background-color: #f202 ;
+}
+
+.item:hover {
+    background-color: #f0f0f0;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+}
