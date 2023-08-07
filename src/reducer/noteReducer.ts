@@ -60,6 +60,7 @@ const noteReducer = (state: State, action: Action) => {
                 notes: filteredNotes,
                 initialNotes: updatedInitialNotes,
                 selectedNote: null,
+                isActiveEditMode: false,
             };
         }
           
@@ -79,12 +80,16 @@ const noteReducer = (state: State, action: Action) => {
             };
         }
 
-        case NoteAction.CLEARSEARCH: {
+        case NoteAction.CLEAR_SEARCH: {
             return {
                 ...state,
                 notes: state.initialNotes, 
                 query: QueryStatus.ALL,
             };
+        }
+
+        case NoteAction.TOGGLE_EDIT_MODE: {
+            return {...state, isActiveEditMode: !state.isActiveEditMode }
         }
 
         default: {

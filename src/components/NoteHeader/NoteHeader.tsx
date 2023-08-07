@@ -4,6 +4,7 @@ import { INote } from "../../interfaces/INote";
 import { createNote } from "../../utils/createNote/createNote";
 import { useNoteState } from "../../hooks/useNoteState";
 import { QueryStatus } from "../../enums/QueryStatus";
+import { useNoteDispatch } from "../../hooks/useNoteDispatch";
 
 
 import SearchBox from "../SearchBox";
@@ -21,6 +22,7 @@ const NoteHeader: FC<INoteHeader> = ({
     openModal
 }) => {
     const { selectedNote, query } = useNoteState();
+    const dispatch = useNoteDispatch();
 
     const onAddNoteHandler = () => {
         const note = createNote();
@@ -29,6 +31,10 @@ const NoteHeader: FC<INoteHeader> = ({
 
     const onDeleteNote = () => {
         openModal();
+    }
+
+    const onEditHandler = () => {
+        dispatch({ type:'toggleEditMode' })
     }
 
     return (
@@ -48,6 +54,7 @@ const NoteHeader: FC<INoteHeader> = ({
                 </Button>
 
                 <Button
+                    onClick={onEditHandler}
                     isDisabled={selectedNote === null}
                 >
                     edit

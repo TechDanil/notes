@@ -13,7 +13,7 @@ interface IWorkspace {
 }
 
 const Workspace: FC<IWorkspace> = ({ handleEditNote }) => {
-    const { selectedNote } = useNoteState();
+    const { selectedNote, isActiveEditMode } = useNoteState();
     const title = useInput('');
     const description = useInput('');
 
@@ -33,7 +33,6 @@ const Workspace: FC<IWorkspace> = ({ handleEditNote }) => {
             if (!selectedNote) {
                 return;
             }
-
             
             handleEditNote({
                 ...selectedNote,
@@ -52,11 +51,10 @@ const Workspace: FC<IWorkspace> = ({ handleEditNote }) => {
 
     }, [selectedNote, title.value, description.value]);
 
-    console.log('render');
 
     return (
         <div className={styles.workspace}>
-            {selectedNote && (
+            {selectedNote && isActiveEditMode && (
                 <Fragment>
                     <input
                         className={styles.title}

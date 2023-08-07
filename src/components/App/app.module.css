@@ -13,3 +13,10 @@
 .content {
     display: flex;
 }
+
+.modal__btn {
+    margin-top: 20px;
+    margin-left: 42%;
+    margin-right: -42%;
+    transform: translateX(-1px);
+}

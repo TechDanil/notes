@@ -24,7 +24,6 @@ const App: FC = () => {
             try {
                 const database = await db;
                 const dbNotes = await database.getAll(STORE_NAME);
-                console.log(dbNotes);
                 dispatch?.({ type: NoteAction.LOAD, notes: dbNotes, initialNotes: dbNotes });
             } catch(error) {
                 throw new Error('Ошибка загрузки записок из indexedDB.', (error as ErrorOptions | undefined));
@@ -68,7 +67,6 @@ const App: FC = () => {
         if (selectedNote) {
             const { id } = selectedNote as INote;
             handleRemoveNote(id);
-            console.log(id);
             dispatch?.({ type: NoteAction.DELETE, id });
         }
 
@@ -76,16 +74,12 @@ const App: FC = () => {
     }, [selectedNote]);
 
     const closeModal = () => {
-        console.log('closed');
         setIsModalActive(false);
     }
 
-    const openModal = useCallback(() => {
-        console.log('worked');
+    const openModal = () => {
         setIsModalActive(true);
-    }, [selectedNote]);
-
-    console.log(isModalActive);
+    }
 
     return (
         <>
@@ -107,7 +101,12 @@ const App: FC = () => {
             {isModalActive && (
                 <Modal onCloseModalHandler={closeModal}>
                     <p>Вы уверены что хотите удалить заметку?</p>
-                    <Button onClick={deleteNote}>Да</Button>
+                    <Button 
+                    classes={styles.modal__btn}
+                    onClick={deleteNote}
+                    >
+                        Да
+                    </Button>
                 </Modal>
             )}
         </>

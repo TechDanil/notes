@@ -5,7 +5,8 @@ enum NoteAction {
     SELECT = 'select',
     DELETE = 'delete',
     SEARCH = 'search',
-    CLEARSEARCH = 'clearSearch',
+    CLEAR_SEARCH = 'clearSearch',
+    TOGGLE_EDIT_MODE = 'toggleEditMode'
 }
 
 export { NoteAction };

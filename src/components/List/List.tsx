@@ -16,8 +16,6 @@ const List: FC = () => {
         dispatch({ type: NoteAction.SELECT, note });
     }, []);
 
-    console.log('rendered');
-
     return (
         <ul className={styles.list}>
             {notes.length === 0 ? (

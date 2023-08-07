@@ -9,6 +9,7 @@ type Action =
     | { type: 'select', note: INote }
     | { type: 'search', query: string }
     | { type: 'clearSearch' }
+    | { type: 'toggleEditMode' };
 
 type Dispatch = (action: Action) => void;
 
@@ -17,6 +18,7 @@ type State = {
     initialNotes: INote[];
     selectedNote: INote | null;
     query: string;
+    isActiveEditMode: boolean;
 };
 
 const NoteStateContext = createContext<State | undefined>(undefined);

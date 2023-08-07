@@ -11,7 +11,8 @@ const NoteProvider: FC<INoteProvider> = ({ children }) => {
         notes: [], 
         selectedNote: null, 
         initialNotes: [], 
-        query: 'all' 
+        query: 'all' ,
+        isActiveEditMode: false
     });
 
     return (

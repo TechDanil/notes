@@ -18,7 +18,7 @@ const SearchBox: FC = () => {
             dispatch?.({ type: NoteAction.SEARCH, query });
             navigate('/search');
         } else {
-            dispatch?.({ type: NoteAction.CLEARSEARCH });
+            dispatch?.({ type: NoteAction.CLEAR_SEARCH });
             navigate('/all');
         }
     }, DEBOUNCE_SEARCH_TIME);
@@ -26,7 +26,7 @@ const SearchBox: FC = () => {
     useEffect(() => {
         if (!searchQuery.value) {
             debouncedCancel();
-            dispatch?.({ type: NoteAction.CLEARSEARCH });
+            dispatch?.({ type: NoteAction.CLEAR_SEARCH });
             navigate('/all');
         } else {
             debounced(searchQuery.value);
@@ -34,15 +34,13 @@ const SearchBox: FC = () => {
     }, [searchQuery.value]);
 
     return (
-        <>
-            <input
-                className={styles.search}
-                type="text"
-                placeholder="Search"
-                value={searchQuery.value}
-                onChange={searchQuery.onChange}
-            />
-        </>
+        <input
+            className={styles.search}
+            type="text"
+            placeholder="Search"
+            value={searchQuery.value}
+            onChange={searchQuery.onChange}
+        />
     )
 }
 

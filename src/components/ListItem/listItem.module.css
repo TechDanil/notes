@@ -4,6 +4,7 @@
     background-color: #fff;
     margin-bottom: 10px;
     min-height: 60px;
+
     cursor: pointer;
     width: 300px;
     transition: background-color 0.2s ease;
@@ -15,6 +16,11 @@
 
 .item:hover {
     background-color: #f0f0f0;
+}
+
+.title, .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title {

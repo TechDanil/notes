@@ -6,19 +6,19 @@ interface IButton {
     onClick?: () => void
     children: ReactNode;
     isDisabled?: boolean;
+    classes?: string;
 }
 
 const Button: FC<IButton> = ({ 
     children, 
     onClick,
-    isDisabled
+    isDisabled,
+    classes
 }) => {
-    console.log(isDisabled);
-
     return (
         <button 
         onClick={onClick}
-        className={`${styles.button} ${isDisabled === true ? styles.disabled : ""}`}
+        className={`${styles.button} ${classes} ${isDisabled === true ? styles.disabled : ""}`}
         disabled={isDisabled}
         >
             {children}
