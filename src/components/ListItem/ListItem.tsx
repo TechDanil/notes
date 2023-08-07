@@ -1,5 +1,6 @@
+import { FC, memo } from "react";
+
 import { INote } from "../../interfaces/INote";
-import { FC } from "react";
 
 import styles from './listItem.module.css';
 
@@ -14,15 +15,18 @@ const ListItem: FC<INoteItem> = ({
     isSelected,
     onSelectedHandler
  }) => {
+
     return (
-        <div 
-        className={`${styles.item} ${isSelected ? styles.active : ''}`}
-        onClick={onSelectedHandler}
-        >
-            <h3 className={styles.title}>{note.title}</h3>
-            <p className={styles.description}>{note.description}</p>
-        </div>
-    )
+        <>
+            <li 
+                className={`${styles.item} ${isSelected ? styles.active : ''}`}
+                onClick={onSelectedHandler}
+            >
+                <h3 className={styles.title}>{note.title}</h3>
+                <p className={styles.description}>{note.description}</p>
+            </li>
+        </>
+    );
 }
 
-export default ListItem;
+export default memo(ListItem);

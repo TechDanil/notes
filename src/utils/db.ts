@@ -21,4 +21,5 @@ db.catch((error: unknown) => {
     throw new Error('Ошбика при открытии бд', (error as ErrorOptions | undefined));
 });
 
+
 export { db };

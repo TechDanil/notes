@@ -3,6 +3,7 @@
     border: 1px solid #ccc;
     background-color: #fff;
     margin-bottom: 10px;
+    min-height: 60px;
     cursor: pointer;
     width: 300px;
     transition: background-color 0.2s ease;
@@ -25,4 +26,23 @@
 .description {
     font-size: 14px;
     color: #666;
+}
+
+
+@media (max-width: 768px) {
+    .item {
+        width: 231px;
+    }
+}
+
+@media (max-width: 469px) {
+    .item {
+        width: 202px;
+    }
+}
+
+@media (max-width: 397px) {
+    .item {
+        width: 181px;
+    }
 }

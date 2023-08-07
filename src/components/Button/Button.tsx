@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, memo } from "react";
 
 import styles from './button.module.css';
 
@@ -13,10 +13,12 @@ const Button: FC<IButton> = ({
     onClick,
     isDisabled
 }) => {
+    console.log(isDisabled);
+
     return (
         <button 
         onClick={onClick}
-        className={`${styles.button} ${isDisabled ? styles.disabled : ""}`}
+        className={`${styles.button} ${isDisabled === true ? styles.disabled : ""}`}
         disabled={isDisabled}
         >
             {children}
@@ -24,4 +26,6 @@ const Button: FC<IButton> = ({
     );
 }
 
-export default Button;
+export default memo(Button, (prevState, nextState) => {
+    return prevState.isDisabled === nextState.isDisabled;
+});

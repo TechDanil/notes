@@ -7,7 +7,12 @@ interface INoteProvider {
 }
 
 const NoteProvider: FC<INoteProvider> = ({ children }) => {
-    const [state, dispatch] = useReducer(noteReducer, { notes: [], selectedNote: null });
+    const [state, dispatch] = useReducer(noteReducer, { 
+        notes: [], 
+        selectedNote: null, 
+        initialNotes: [], 
+        query: 'all' 
+    });
 
     return (
         <NoteStateContext.Provider value={state}>

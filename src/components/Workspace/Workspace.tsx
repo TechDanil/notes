@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect, ChangeEvent } from "react";
+import { FC, Fragment, useEffect, memo } from "react";
 import { debounce } from "../../utils/debounce/debounce";
 import { DEBOUNCE_TIME } from "../../constants/constants";
 import { useNoteState } from "../../hooks/useNoteState";
@@ -21,32 +21,38 @@ const Workspace: FC<IWorkspace> = ({ handleEditNote }) => {
         if (selectedNote) {
             title.setValue(selectedNote.title);
             description.setValue(selectedNote.description);
+        } else {
+            title.setValue("");
+            description.setValue("");
         }
     }, [selectedNote]);
+   
 
     useEffect(() => {
         const saveNote = () => {
-            if (selectedNote) {
-                handleEditNote({
-                    ...selectedNote,
-                    title: title.value,
-                    description: description.value,
-                });
+            if (!selectedNote) {
+                return;
             }
+
+            
+            handleEditNote({
+                ...selectedNote,
+                title: title.value,
+                description: description.value,
+            });
         }
 
         const { debounced, debouncedCancel } = debounce(saveNote, DEBOUNCE_TIME);
-     
+        
         debounced();
 
         return () => {
             debouncedCancel();
         };
 
-    }, [selectedNote, title, description]);
+    }, [selectedNote, title.value, description.value]);
 
-    console.log(title);
-    console.log(description);
+    console.log('render');
 
     return (
         <div className={styles.workspace}>
@@ -56,13 +62,13 @@ const Workspace: FC<IWorkspace> = ({ handleEditNote }) => {
                         className={styles.title}
                         type="text"
                         value={title.value}
-                        onChange={title.onChange as (e: ChangeEvent<HTMLInputElement>) => void}
+                        onChange={title.onChange}
                     />
 
                     <textarea
                         value={description.value} 
                         className={styles.description}
-                        onChange={description.onChange as (e: ChangeEvent<HTMLTextAreaElement>) => void}
+                        onChange={description.onChange}
                     />
                 </Fragment>
             )}
@@ -70,4 +76,4 @@ const Workspace: FC<IWorkspace> = ({ handleEditNote }) => {
     )
 }
 
-export default Workspace;
+export default memo(Workspace);

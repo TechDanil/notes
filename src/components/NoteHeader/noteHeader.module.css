@@ -11,3 +11,50 @@
     justify-content: space-between;
     width: 200px;
 }
+
+
+@media (max-width: 991px) {
+    .header {
+        width: 642px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        width: 455px;
+    }
+}
+
+@media (max-width: 469px) {
+    .header {
+        width: 388px;
+    }
+
+    .buttons {
+        width: 187px;
+    }
+}
+
+@media (max-width: 469px) {
+    .header {
+        width: 386px;
+    }
+
+    .buttons {
+        width: 187px;
+    }
+}
+
+
+@media (max-width: 397px) {
+    .header {
+        width: 365px;
+    }
+}
+
+@media (max-width: 375px) {
+    .header {
+        width: 349px;
+    }
+}

@@ -1,3 +1,23 @@
 .sidebar {
-    
+    width: 301px;
+    border: 1px solid #000;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 233px;
+    }
+}
+
+@media (max-width: 469px) {
+    .sidebar {
+        width: 204px;
+    }
+}
+
+@media (max-width: 397px) {
+    .sidebar {
+        width: 183px;
+    }
 }

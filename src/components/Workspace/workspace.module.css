@@ -24,3 +24,29 @@
     font-weight: 600;
     margin-top: 30px;
 }
+
+
+
+@media (max-width: 991px) {
+    .workspace {
+        width: 341px;
+    }
+}
+
+@media (max-width: 768px) {
+    .workspace {
+        width: 221px;
+    }
+}
+
+@media (max-width: 469px) {
+    .workspace {
+        width: 182px;
+    }
+}
+
+@media (max-width: 375px) {
+    .workspace {
+        width: 166px;
+    }
+}
